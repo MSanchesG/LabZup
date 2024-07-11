@@ -44,10 +44,16 @@ namespace Zup.Lab.Plugins {
                        message, PluginExecutionContext.CorrelationId, PluginExecutionContext.InitiatingUserId);
             }
 
-            public Entity GetTarget()
+            public Entity GetTargetEntity()
             {
                 return (Entity)PluginExecutionContext.InputParameters["Target"];
             }
+
+            public EntityReference GetTargetEntityReference()
+            {
+                return (EntityReference)PluginExecutionContext.InputParameters["Target"];
+            }
+
 
             public string MessageName()
             {
