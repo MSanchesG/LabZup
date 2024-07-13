@@ -57,6 +57,39 @@ Zup.Lab.LabIncident = Zup.Lab.LabIncident || {
         }
     },
 
+    Escalate: function (formContext) {
+        "use strict"
+
+        var execute_zup_ActionAumentarPrioridade_Request = {
+            Entity: "zup_lab_ocorrencia",
+            RegisterId: formContext.data.entity.getId(),
+
+            getMetadata: function () {
+                return {
+                    boundParameter: null,
+                    parameterTypes: {
+                        Entity: { typeName: "Edm.String", structuralProperty: 1 },
+                        RegisterId: { typeName: "Edm.String", structuralProperty: 1 }
+                    },
+                    operationType: 0, operationName: "zup_ActionAumentarPrioridade"
+                };
+            }
+        };
+
+        Xrm.WebApi.execute(execute_zup_ActionAumentarPrioridade_Request).then(
+            function success(response) {
+                if (response.ok) { return response.json(); }
+            }
+        ).then(function (responseBody) {
+            var result = responseBody;
+            var newpriority = result["NewPriority"];
+            alert("Nova Prioridade: " + newpriority);
+            formContext.data.refresh();
+        }).catch(function (error) {
+            alert("Erro: " + error.message);
+        });
+    },
+
     SetLookupValue: function (formContext, fieldName, id, name, entityType) {
         "use strict";
         var lookup = [{ id: id, name: name, entityType: entityType }];

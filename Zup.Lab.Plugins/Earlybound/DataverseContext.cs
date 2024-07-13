@@ -30,6 +30,17 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
+		/// Gets a binding to the set of all <see cref="DataverseModel.Account"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<DataverseModel.Account> AccountSet
+		{
+			get
+			{
+				return this.CreateQuery<DataverseModel.Account>();
+			}
+		}
+		
+		/// <summary>
 		/// Gets a binding to the set of all <see cref="DataverseModel.Contact"/> entities.
 		/// </summary>
 		public System.Linq.IQueryable<DataverseModel.Contact> ContactSet
@@ -103,6 +114,17 @@ namespace DataverseModel
 			get
 			{
 				return this.CreateQuery<DataverseModel.zup_subcategoria_Queue>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="DataverseModel.zup_virtual_post"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<DataverseModel.zup_virtual_post> zup_virtual_postSet
+		{
+			get
+			{
+				return this.CreateQuery<DataverseModel.zup_virtual_post>();
 			}
 		}
 	}

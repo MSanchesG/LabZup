@@ -93,6 +93,7 @@ namespace DataverseModel
 			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
 			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
 			public const string VersionNumber = "versionnumber";
+			public const string zup_account_zup_lab_ocorrencia_918 = "zup_account_zup_lab_ocorrencia_918";
 			public const string zup_categoriaid = "zup_categoriaid";
 			public const string zup_categoriaidName = "zup_categoriaidname";
 			public const string zup_classificacaoid = "zup_classificacaoid";
@@ -108,6 +109,8 @@ namespace DataverseModel
 			public const string zup_lab_ocorrenciaId = "zup_lab_ocorrenciaid";
 			public const string Id = "zup_lab_ocorrenciaid";
 			public const string zup_Name = "zup_name";
+			public const string zup_prioridade = "zup_prioridade";
+			public const string zup_prioridadeName = "zup_prioridadename";
 			public const string zup_subcategoriaid = "zup_subcategoriaid";
 			public const string zup_subcategoriaidName = "zup_subcategoriaidname";
 		}
@@ -828,6 +831,38 @@ namespace DataverseModel
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("zup_prioridade")]
+		public virtual zup_Prioridade? zup_prioridade
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((zup_Prioridade?)(EntityOptionSetEnum.GetEnum(this, "zup_prioridade")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("zup_prioridade", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("zup_prioridadename")]
+		public string zup_prioridadeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("zup_prioridade"))
+				{
+					return this.FormattedValues["zup_prioridade"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("zup_subcategoriaid")]
 		public Microsoft.Xrm.Sdk.EntityReference zup_subcategoriaid
 		{
@@ -857,6 +892,25 @@ namespace DataverseModel
 				{
 					return default(string);
 				}
+			}
+		}
+		
+		/// <summary>
+		/// N:1 zup_account_zup_lab_ocorrencia_918
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("zup_cliente")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("zup_account_zup_lab_ocorrencia_918")]
+		public DataverseModel.Account zup_account_zup_lab_ocorrencia_918
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<DataverseModel.Account>("zup_account_zup_lab_ocorrencia_918", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<DataverseModel.Account>("zup_account_zup_lab_ocorrencia_918", null, value);
 			}
 		}
 		

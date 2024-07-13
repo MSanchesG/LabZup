@@ -7,8 +7,8 @@ namespace Zup.Lab.Plugins {
 
         public class LocalPluginContext {
             internal IServiceProvider ServiceProvider { get; private set; }
-            internal IOrganizationService OrganizationService { get; private set; }
-            internal IOrganizationService OrganizationServiceAdmin { get; private set; }
+            internal IOrganizationService service { get; private set; }
+            internal IOrganizationService serviceAdmin { get; private set; }
             internal IPluginExecutionContext PluginExecutionContext { get; private set; }
             internal IServiceEndpointNotificationService NotificationService { get; private set; }
             internal IOrganizationServiceFactory Factory { get; private set; }
@@ -25,8 +25,8 @@ namespace Zup.Lab.Plugins {
                 TracingService = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
                 NotificationService = (IServiceEndpointNotificationService)serviceProvider.GetService(typeof(IServiceEndpointNotificationService));
                 Factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
-                OrganizationService = Factory.CreateOrganizationService(PluginExecutionContext.UserId);
-                OrganizationServiceAdmin = Factory.CreateOrganizationService(null);
+                service = Factory.CreateOrganizationService(PluginExecutionContext.UserId);
+                serviceAdmin = Factory.CreateOrganizationService(null);
             }
 
 

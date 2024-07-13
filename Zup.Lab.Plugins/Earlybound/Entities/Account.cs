@@ -14,30 +14,50 @@ namespace DataverseModel
 	
 	
 	/// <summary>
-	/// Função da conta do contato.
+	/// Lista suspensa para selecionar a categoria da conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_AccountRoleCode
+	public enum Account_AccountCategoryCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Funcionário", 1)]
-		FuncionRio = 2,
+		[OptionSetMetadataAttribute("Cliente Preferencial", 0)]
+		ClientePreferencial = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Influenciador", 2)]
-		Influenciador = 3,
+		[OptionSetMetadataAttribute("Padrão", 1)]
+		PadrO = 2,
+	}
+	
+	/// <summary>
+	/// Lista suspensa para classificar uma conta.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	public enum Account_AccountClassificationCode
+	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Tomador de Decisão", 0)]
-		TomadorDeDecisO = 1,
+		[OptionSetMetadataAttribute("Valor Padrão", 0)]
+		ValorPadrO = 1,
+	}
+	
+	/// <summary>
+	/// Lista suspensa para selecionar classificações de conta.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	public enum Account_AccountRatingCode
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Valor Padrão", 0)]
+		ValorPadrO = 1,
 	}
 	
 	/// <summary>
 	/// Tipo do endereço 1, como por exemplo, endereço para cobrança, endereço para entrega ou endereço primário.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address1_AddressTypeCode
+	public enum Account_Address1_AddressTypeCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -61,7 +81,7 @@ namespace DataverseModel
 	/// Condições de frete do endereço 1.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address1_FreightTermsCode
+	public enum Account_Address1_FreightTermsCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -77,7 +97,7 @@ namespace DataverseModel
 	/// Método de entrega para endereço 1.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address1_ShippingMethodCode
+	public enum Account_Address1_ShippingMethodCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -113,7 +133,7 @@ namespace DataverseModel
 	/// Tipo do endereço 2, como por exemplo, endereço para cobrança, endereço para entrega ou endereço primário.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address2_AddressTypeCode
+	public enum Account_Address2_AddressTypeCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -125,7 +145,7 @@ namespace DataverseModel
 	/// Condições de frete do endereço 2.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address2_FreightTermsCode
+	public enum Account_Address2_FreightTermsCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -137,7 +157,7 @@ namespace DataverseModel
 	/// Método de entrega para endereço 2.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address2_ShippingMethodCode
+	public enum Account_Address2_ShippingMethodCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -146,10 +166,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Tipo do endereço 3, como por exemplo, endereço para cobrança, endereço para entrega ou endereço primário.
+	/// Tipo de negócio associado à conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address3_AddressTypeCode
+	public enum Account_BusinessTypeCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -158,10 +178,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Condições de frete do endereço 3.
+	/// Tamanho da conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address3_FreightTermsCode
+	public enum Account_CustomerSizeCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -170,122 +190,218 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Método de entrega para endereço 3.
+	/// Tipo da conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_Address3_ShippingMethodCode
+	public enum Account_CustomerTypeCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Valor Padrão", 0)]
-		ValorPadrO = 1,
+		[OptionSetMetadataAttribute("Cliente", 2)]
+		Cliente = 3,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Cliente Potencial", 7)]
+		ClientePotencial = 8,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Concorrente", 0)]
+		Concorrente = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Consultor", 1)]
+		Consultor = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Fornecedor", 9)]
+		Fornecedor = 10,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Fornecedor de serviços", 10)]
+		FornecedorDeServiOs = 11,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Imprensa", 6)]
+		Imprensa = 7,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Influenciador", 5)]
+		Influenciador = 6,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Investidor", 3)]
+		Investidor = 4,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Outro", 11)]
+		Outro = 12,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Parceiro", 4)]
+		Parceiro = 5,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Revendedor", 8)]
+		Revendedor = 9,
 	}
 	
 	/// <summary>
-	/// Tamanho do negócio do contato.
+	/// O tipo de setor ao qual a conta está associada.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_CustomerSizeCode
+	public enum Account_IndustryCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Valor Padrão", 0)]
-		ValorPadrO = 1,
+		[OptionSetMetadataAttribute("Agricultura", 3)]
+		Agricultura = 49,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Alimentos", 9)]
+		Alimentos = 79,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Bancos", 10)]
+		Bancos = 81,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Bebidas e Fumo", 18)]
+		BebidasEFumo = 111,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Comércio Atacadista", 1)]
+		ComRcioAtacadista = 33,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Comércio Exterior", 19)]
+		ComRcioExterior = 112,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Comércio Varejista", 6)]
+		ComRcioVarejista = 72,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Construção Civil", 20)]
+		ConstruOCivil = 113,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Educação", 5)]
+		EducaO = 67,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Eletroeletrônico", 2)]
+		EletroeletrNico = 48,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Energia Elétrica", 16)]
+		EnergiaElTrica = 102,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Farmacêutica", 21)]
+		FarmacUtica = 114,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Água e Saneamento", 17)]
+		GuaESaneamento = 110,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Holdings", 22)]
+		Holdings = 115,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Indústria Automobilística", 12)]
+		IndStriaAutomobilStica = 91,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Material de Construção e Decoração", 23)]
+		MaterialDeConstruOEDecoraO = 116,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Mecânica", 24)]
+		MecNica = 117,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Metalurgia", 11)]
+		Metalurgia = 89,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Mineração", 4)]
+		MineraO = 50,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Papel e Celulose", 25)]
+		PapelECelulose = 118,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Plásticos e Borracha", 26)]
+		PlSticosEBorracha = 119,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Química e Petroquímica", 27)]
+		QuMicaEPetroquMica = 120,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Seguros", 0)]
+		Seguros = 20,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Serviços Especializados", 28)]
+		ServiOsEspecializados = 121,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Serviços Médicos", 8)]
+		ServiOsMDicos = 78,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Siderurgia", 15)]
+		Siderurgia = 94,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Tecnologia da Informação", 7)]
+		TecnologiaDaInformaO = 74,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Telecomunicações", 30)]
+		TelecomunicaEs = 135,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Transportes e Logística", 13)]
+		TransportesELogStica = 92,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Têxtil, Couro e Vestuário", 14)]
+		TXtilCouroEVestuRio = 93,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Veículos e Peças", 29)]
+		VeCulosEPeAs = 122,
 	}
 	
 	/// <summary>
-	/// Tipo de negócio associado ao contato.
+	/// Tipo de propriedade da empresa, como por exemplo, pública ou privada.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_CustomerTypeCode
+	public enum Account_OwnershipCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Valor Padrão", 0)]
-		ValorPadrO = 1,
+		[OptionSetMetadataAttribute("Capital Misto", 2)]
+		CapitalMisto = 12,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Particular", 1)]
+		Particular = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		[OptionSetMetadataAttribute("Pública", 0)]
+		PBlica = 1,
 	}
 	
 	/// <summary>
-	/// Nível de formação acadêmica oficial do contato.
+	/// Condições de pagamento da conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_EducationCode
-	{
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Valor Padrão", 0)]
-		ValorPadrO = 1,
-	}
-	
-	/// <summary>
-	/// Estado civil do contato.
-	/// </summary>
-	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_FamilyStatusCode
-	{
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Casado(a)", 1)]
-		Casadoa = 2,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Divorciado(a)", 2)]
-		Divorciadoa = 3,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Solteiro", 0)]
-		Solteiro = 1,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Viúvo(a)", 3)]
-		ViVoa = 4,
-	}
-	
-	/// <summary>
-	/// Sexo do contato.
-	/// </summary>
-	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_GenderCode
-	{
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Feminino", 1)]
-		Feminino = 2,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Masculino", 0)]
-		Masculino = 1,
-	}
-	
-	/// <summary>
-	/// Informação que especifica se o contato tem filhos.
-	/// </summary>
-	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_HasChildrenCode
-	{
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Valor Padrão", 0)]
-		ValorPadrO = 1,
-	}
-	
-	/// <summary>
-	/// Fonte do cliente potencial do contato.
-	/// </summary>
-	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_LeadSourceCode
-	{
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		[OptionSetMetadataAttribute("Valor Padrão", 0)]
-		ValorPadrO = 1,
-	}
-	
-	/// <summary>
-	/// Condições de pagamento do contato.
-	/// </summary>
-	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_PaymentTermsCode
+	public enum Account_PaymentTermsCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -306,10 +422,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Dia da semana preferido pelo contato para agendamento de atividades do serviço.
+	/// Dia da semana em que a conta prefere que as atividades do serviço sejam agendadas.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_PreferredAppointmentDayCode
+	public enum Account_PreferredAppointmentDayCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -342,10 +458,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Hora do dia preferida pelo contato para agendamento de atividades do serviço.
+	/// Hora do dia em que a conta prefere que as atividades do serviço sejam agendadas.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_PreferredAppointmentTimeCode
+	public enum Account_PreferredAppointmentTimeCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -362,10 +478,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Forma de contato preferencial do contato.
+	/// Forma de contato preferencial da conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_PreferredContactMethodCode
+	public enum Account_PreferredContactMethodCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -390,10 +506,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Método de entrega do contato.
+	/// Método de entrega da conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_ShippingMethodCode
+	public enum Account_ShippingMethodCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -402,10 +518,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Status do contato.
+	/// Status da conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum contact_statecode
+	public enum account_statecode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -418,10 +534,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Razão para o status do contato.
+	/// Razão para o status da conta.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_StatusCode
+	public enum Account_StatusCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -434,10 +550,10 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Identificador exclusivo da região à qual o contato está atribuído.
+	/// Região à qual a conta está atribuída.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum Contact_TerritoryCode
+	public enum Account_TerritoryCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -446,24 +562,30 @@ namespace DataverseModel
 	}
 	
 	/// <summary>
-	/// Pessoa com a qual uma unidade de negócios tem um relacionamento, como cliente, fornecedor e colega.
+	/// Um negócio que representa um cliente ou cliente potencial. A empresa que é cobrada em transações comerciais.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("contact")]
-	public partial class Contact : Microsoft.Xrm.Sdk.Entity
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("account")]
+	public partial class Account : Microsoft.Xrm.Sdk.Entity
 	{
 		
 		/// <summary>
-		/// Available fields, a the time of codegen, for the contact entity
+		/// Available fields, a the time of codegen, for the account entity
 		/// </summary>
 		public partial class Fields
 		{
+			public const string Referencingaccount_master_account = "account_master_account";
+			public const string Referencingaccount_parent_account = "account_parent_account";
 			public const string account_primary_contact = "account_primary_contact";
+			public const string AccountCategoryCode = "accountcategorycode";
+			public const string AccountCategoryCodeName = "accountcategorycodename";
+			public const string AccountClassificationCode = "accountclassificationcode";
+			public const string AccountClassificationCodeName = "accountclassificationcodename";
 			public const string AccountId = "accountid";
-			public const string AccountIdName = "accountidname";
-			public const string AccountIdYomiName = "accountidyominame";
-			public const string AccountRoleCode = "accountrolecode";
-			public const string AccountRoleCodeName = "accountrolecodename";
+			public const string Id = "accountid";
+			public const string AccountNumber = "accountnumber";
+			public const string AccountRatingCode = "accountratingcode";
+			public const string AccountRatingCodeName = "accountratingcodename";
 			public const string Address1_AddressId = "address1_addressid";
 			public const string Address1_AddressTypeCode = "address1_addresstypecode";
 			public const string Address1_AddressTypeCodeName = "address1_addresstypecodename";
@@ -518,91 +640,19 @@ namespace DataverseModel
 			public const string Address2_Telephone3 = "address2_telephone3";
 			public const string Address2_UPSZone = "address2_upszone";
 			public const string Address2_UTCOffset = "address2_utcoffset";
-			public const string Address3_AddressId = "address3_addressid";
-			public const string Address3_AddressTypeCode = "address3_addresstypecode";
-			public const string Address3_AddressTypeCodeName = "address3_addresstypecodename";
-			public const string Address3_City = "address3_city";
-			public const string Address3_Composite = "address3_composite";
-			public const string Address3_Country = "address3_country";
-			public const string Address3_County = "address3_county";
-			public const string Address3_Fax = "address3_fax";
-			public const string Address3_FreightTermsCode = "address3_freighttermscode";
-			public const string Address3_FreightTermsCodeName = "address3_freighttermscodename";
-			public const string Address3_Latitude = "address3_latitude";
-			public const string Address3_Line1 = "address3_line1";
-			public const string Address3_Line2 = "address3_line2";
-			public const string Address3_Line3 = "address3_line3";
-			public const string Address3_Longitude = "address3_longitude";
-			public const string Address3_Name = "address3_name";
-			public const string Address3_PostalCode = "address3_postalcode";
-			public const string Address3_PostOfficeBox = "address3_postofficebox";
-			public const string Address3_PrimaryContactName = "address3_primarycontactname";
-			public const string Address3_ShippingMethodCode = "address3_shippingmethodcode";
-			public const string Address3_ShippingMethodCodeName = "address3_shippingmethodcodename";
-			public const string Address3_StateOrProvince = "address3_stateorprovince";
-			public const string Address3_Telephone1 = "address3_telephone1";
-			public const string Address3_Telephone2 = "address3_telephone2";
-			public const string Address3_Telephone3 = "address3_telephone3";
-			public const string Address3_UPSZone = "address3_upszone";
-			public const string Address3_UTCOffset = "address3_utcoffset";
-			public const string adx_ConfirmRemovePassword = "adx_confirmremovepassword";
-			public const string adx_confirmremovepasswordName = "adx_confirmremovepasswordname";
 			public const string Adx_CreatedByIPAddress = "adx_createdbyipaddress";
 			public const string Adx_CreatedByUsername = "adx_createdbyusername";
-			public const string adx_identity_accessfailedcount = "adx_identity_accessfailedcount";
-			public const string adx_identity_emailaddress1confirmed = "adx_identity_emailaddress1confirmed";
-			public const string adx_identity_emailaddress1confirmedName = "adx_identity_emailaddress1confirmedname";
-			public const string adx_identity_lastsuccessfullogin = "adx_identity_lastsuccessfullogin";
-			public const string adx_identity_locallogindisabled = "adx_identity_locallogindisabled";
-			public const string adx_identity_locallogindisabledName = "adx_identity_locallogindisabledname";
-			public const string adx_identity_lockoutenabled = "adx_identity_lockoutenabled";
-			public const string adx_identity_lockoutenabledName = "adx_identity_lockoutenabledname";
-			public const string adx_identity_lockoutenddate = "adx_identity_lockoutenddate";
-			public const string adx_identity_logonenabled = "adx_identity_logonenabled";
-			public const string adx_identity_logonenabledName = "adx_identity_logonenabledname";
-			public const string adx_identity_mobilephoneconfirmed = "adx_identity_mobilephoneconfirmed";
-			public const string adx_identity_mobilephoneconfirmedName = "adx_identity_mobilephoneconfirmedname";
-			public const string adx_identity_newpassword = "adx_identity_newpassword";
-			public const string adx_identity_passwordhash = "adx_identity_passwordhash";
-			public const string adx_identity_securitystamp = "adx_identity_securitystamp";
-			public const string adx_identity_twofactorenabled = "adx_identity_twofactorenabled";
-			public const string adx_identity_twofactorenabledName = "adx_identity_twofactorenabledname";
-			public const string adx_identity_username = "adx_identity_username";
 			public const string Adx_ModifiedByIPAddress = "adx_modifiedbyipaddress";
 			public const string Adx_ModifiedByUsername = "adx_modifiedbyusername";
-			public const string Adx_OrganizationName = "adx_organizationname";
-			public const string adx_preferredlcid = "adx_preferredlcid";
-			public const string adx_profilealert = "adx_profilealert";
-			public const string adx_profilealertdate = "adx_profilealertdate";
-			public const string adx_profilealertinstructions = "adx_profilealertinstructions";
-			public const string adx_profilealertName = "adx_profilealertname";
-			public const string Adx_ProfileIsAnonymous = "adx_profileisanonymous";
-			public const string adx_profileisanonymousName = "adx_profileisanonymousname";
-			public const string Adx_ProfileLastActivity = "adx_profilelastactivity";
-			public const string adx_profilemodifiedon = "adx_profilemodifiedon";
-			public const string adx_PublicProfileCopy = "adx_publicprofilecopy";
-			public const string Adx_TimeZone = "adx_timezone";
 			public const string Aging30 = "aging30";
 			public const string Aging30_Base = "aging30_base";
 			public const string Aging60 = "aging60";
 			public const string Aging60_Base = "aging60_base";
 			public const string Aging90 = "aging90";
 			public const string Aging90_Base = "aging90_base";
-			public const string Anniversary = "anniversary";
-			public const string AnnualIncome = "annualincome";
-			public const string AnnualIncome_Base = "annualincome_base";
-			public const string AssistantName = "assistantname";
-			public const string AssistantPhone = "assistantphone";
-			public const string BirthDate = "birthdate";
-			public const string Business2 = "business2";
-			public const string Callback = "callback";
-			public const string ChildrensNames = "childrensnames";
-			public const string Company = "company";
+			public const string BusinessTypeCode = "businesstypecode";
+			public const string BusinessTypeCodeName = "businesstypecodename";
 			public const string contact_customer_accounts = "contact_customer_accounts";
-			public const string Referencingcontact_customer_contacts = "contact_customer_contacts";
-			public const string Referencingcontact_master_contact = "contact_master_contact";
-			public const string ContactId = "contactid";
-			public const string Id = "contactid";
 			public const string CreatedBy = "createdby";
 			public const string CreatedByExternalParty = "createdbyexternalparty";
 			public const string CreatedByExternalPartyName = "createdbyexternalpartyname";
@@ -621,7 +671,6 @@ namespace DataverseModel
 			public const string CustomerSizeCodeName = "customersizecodename";
 			public const string CustomerTypeCode = "customertypecode";
 			public const string CustomerTypeCodeName = "customertypecodename";
-			public const string Department = "department";
 			public const string Description = "description";
 			public const string DoNotBulkEMail = "donotbulkemail";
 			public const string DoNotBulkEMailName = "donotbulkemailname";
@@ -637,53 +686,33 @@ namespace DataverseModel
 			public const string DoNotPostalMailName = "donotpostalmailname";
 			public const string DoNotSendMarketingMaterialName = "donotsendmarketingmaterialname";
 			public const string DoNotSendMM = "donotsendmm";
-			public const string EducationCode = "educationcode";
-			public const string EducationCodeName = "educationcodename";
 			public const string EMailAddress1 = "emailaddress1";
 			public const string EMailAddress2 = "emailaddress2";
 			public const string EMailAddress3 = "emailaddress3";
-			public const string EmployeeId = "employeeid";
 			public const string EntityImage = "entityimage";
 			public const string EntityImage_Timestamp = "entityimage_timestamp";
 			public const string EntityImage_URL = "entityimage_url";
 			public const string EntityImageId = "entityimageid";
 			public const string ExchangeRate = "exchangerate";
-			public const string ExternalUserIdentifier = "externaluseridentifier";
-			public const string FamilyStatusCode = "familystatuscode";
-			public const string FamilyStatusCodeName = "familystatuscodename";
 			public const string Fax = "fax";
-			public const string FirstName = "firstname";
 			public const string FollowEmail = "followemail";
 			public const string FollowEmailName = "followemailname";
-			public const string FtpSiteUrl = "ftpsiteurl";
-			public const string FullName = "fullname";
-			public const string GenderCode = "gendercode";
-			public const string GenderCodeName = "gendercodename";
-			public const string GovernmentId = "governmentid";
-			public const string HasChildrenCode = "haschildrencode";
-			public const string HasChildrenCodeName = "haschildrencodename";
-			public const string Home2 = "home2";
+			public const string FtpSiteURL = "ftpsiteurl";
 			public const string ImportSequenceNumber = "importsequencenumber";
-			public const string IsBackofficeCustomer = "isbackofficecustomer";
-			public const string IsBackofficeCustomerName = "isbackofficecustomername";
+			public const string IndustryCode = "industrycode";
+			public const string IndustryCodeName = "industrycodename";
 			public const string IsPrivateName = "isprivatename";
-			public const string JobTitle = "jobtitle";
-			public const string LastName = "lastname";
 			public const string LastOnHoldTime = "lastonholdtime";
 			public const string LastUsedInCampaign = "lastusedincampaign";
-			public const string LeadSourceCode = "leadsourcecode";
-			public const string LeadSourceCodeName = "leadsourcecodename";
-			public const string ManagerName = "managername";
-			public const string ManagerPhone = "managerphone";
+			public const string MarketCap = "marketcap";
+			public const string MarketCap_Base = "marketcap_base";
 			public const string MarketingOnly = "marketingonly";
 			public const string MarketingOnlyName = "marketingonlyname";
-			public const string MasterContactIdName = "mastercontactidname";
-			public const string MasterContactIdYomiName = "mastercontactidyominame";
+			public const string MasterAccountIdName = "masteraccountidname";
+			public const string MasterAccountIdYomiName = "masteraccountidyominame";
 			public const string MasterId = "masterid";
 			public const string Merged = "merged";
 			public const string MergedName = "mergedname";
-			public const string MiddleName = "middlename";
-			public const string MobilePhone = "mobilephone";
 			public const string ModifiedBy = "modifiedby";
 			public const string ModifiedByExternalParty = "modifiedbyexternalparty";
 			public const string ModifiedByExternalPartyName = "modifiedbyexternalpartyname";
@@ -694,37 +723,27 @@ namespace DataverseModel
 			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
 			public const string ModifiedOnBehalfByName = "modifiedonbehalfbyname";
 			public const string ModifiedOnBehalfByYomiName = "modifiedonbehalfbyyominame";
+			public const string Referencingmsa_account_managingpartner = "msa_account_managingpartner";
 			public const string msa_contact_managingpartner = "msa_contact_managingpartner";
 			public const string msa_managingpartnerid = "msa_managingpartnerid";
 			public const string msa_managingpartneridName = "msa_managingpartneridname";
 			public const string msa_managingpartneridYomiName = "msa_managingpartneridyominame";
-			public const string msdyn_disablewebtracking = "msdyn_disablewebtracking";
-			public const string msdyn_disablewebtrackingName = "msdyn_disablewebtrackingname";
-			public const string msdyn_isminor = "msdyn_isminor";
-			public const string msdyn_isminorName = "msdyn_isminorname";
-			public const string msdyn_isminorwithparentalconsent = "msdyn_isminorwithparentalconsent";
-			public const string msdyn_isminorwithparentalconsentName = "msdyn_isminorwithparentalconsentname";
-			public const string msdyn_portaltermsagreementdate = "msdyn_portaltermsagreementdate";
-			public const string mspp_userpreferredlcid = "mspp_userpreferredlcid";
-			public const string mspp_userpreferredlcidName = "mspp_userpreferredlcidname";
-			public const string NickName = "nickname";
-			public const string NumberOfChildren = "numberofchildren";
+			public const string Name = "name";
+			public const string NumberOfEmployees = "numberofemployees";
 			public const string OnHoldTime = "onholdtime";
 			public const string OverriddenCreatedOn = "overriddencreatedon";
 			public const string OwnerId = "ownerid";
 			public const string OwnerIdName = "owneridname";
 			public const string OwnerIdYomiName = "owneridyominame";
+			public const string OwnershipCode = "ownershipcode";
+			public const string OwnershipCodeName = "ownershipcodename";
 			public const string OwningBusinessUnit = "owningbusinessunit";
 			public const string OwningBusinessUnitName = "owningbusinessunitname";
 			public const string OwningTeam = "owningteam";
 			public const string OwningUser = "owninguser";
-			public const string Pager = "pager";
-			public const string ParentContactId = "parentcontactid";
-			public const string ParentContactIdName = "parentcontactidname";
-			public const string ParentContactIdYomiName = "parentcontactidyominame";
-			public const string ParentCustomerId = "parentcustomerid";
-			public const string ParentCustomerIdName = "parentcustomeridname";
-			public const string ParentCustomerIdYomiName = "parentcustomeridyominame";
+			public const string ParentAccountId = "parentaccountid";
+			public const string ParentAccountIdName = "parentaccountidname";
+			public const string ParentAccountIdYomiName = "parentaccountidyominame";
 			public const string ParticipatesInWorkflow = "participatesinworkflow";
 			public const string ParticipatesInWorkflowName = "participatesinworkflowname";
 			public const string PaymentTermsCode = "paymenttermscode";
@@ -738,29 +757,37 @@ namespace DataverseModel
 			public const string PreferredSystemUserId = "preferredsystemuserid";
 			public const string PreferredSystemUserIdName = "preferredsystemuseridname";
 			public const string PreferredSystemUserIdYomiName = "preferredsystemuseridyominame";
+			public const string PrimaryContactId = "primarycontactid";
+			public const string PrimaryContactIdName = "primarycontactidname";
+			public const string PrimaryContactIdYomiName = "primarycontactidyominame";
+			public const string PrimarySatoriId = "primarysatoriid";
+			public const string PrimaryTwitterId = "primarytwitterid";
 			public const string ProcessId = "processid";
-			public const string Referencedcontact_customer_contacts = "Referencedcontact_customer_contacts";
-			public const string Referencedcontact_master_contact = "Referencedcontact_master_contact";
-			public const string Salutation = "salutation";
+			public const string Referencedaccount_master_account = "Referencedaccount_master_account";
+			public const string Referencedaccount_parent_account = "Referencedaccount_parent_account";
+			public const string Referencedmsa_account_managingpartner = "Referencedmsa_account_managingpartner";
+			public const string Revenue = "revenue";
+			public const string Revenue_Base = "revenue_base";
+			public const string SharesOutstanding = "sharesoutstanding";
 			public const string ShippingMethodCode = "shippingmethodcode";
 			public const string ShippingMethodCodeName = "shippingmethodcodename";
+			public const string SIC = "sic";
 			public const string SLAId = "slaid";
 			public const string SLAInvokedId = "slainvokedid";
 			public const string SLAInvokedIdName = "slainvokedidname";
 			public const string SLAName = "slaname";
-			public const string SpousesName = "spousesname";
 			public const string StageId = "stageid";
 			public const string StateCode = "statecode";
 			public const string StateCodeName = "statecodename";
 			public const string StatusCode = "statuscode";
 			public const string StatusCodeName = "statuscodename";
-			public const string SubscriptionId = "subscriptionid";
-			public const string Suffix = "suffix";
+			public const string StockExchange = "stockexchange";
 			public const string Telephone1 = "telephone1";
 			public const string Telephone2 = "telephone2";
 			public const string Telephone3 = "telephone3";
 			public const string TerritoryCode = "territorycode";
 			public const string TerritoryCodeName = "territorycodename";
+			public const string TickerSymbol = "tickersymbol";
 			public const string TimeSpentByMeOnEmailAndMeetings = "timespentbymeonemailandmeetings";
 			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
 			public const string TransactionCurrencyId = "transactioncurrencyid";
@@ -768,28 +795,25 @@ namespace DataverseModel
 			public const string TraversedPath = "traversedpath";
 			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
 			public const string VersionNumber = "versionnumber";
-			public const string WebSiteUrl = "websiteurl";
-			public const string YomiFirstName = "yomifirstname";
-			public const string YomiFullName = "yomifullname";
-			public const string YomiLastName = "yomilastname";
-			public const string YomiMiddleName = "yomimiddlename";
-			public const string zup_contact_zup_lab_ocorrencia_918 = "zup_contact_zup_lab_ocorrencia_918";
+			public const string WebSiteURL = "websiteurl";
+			public const string YomiName = "yominame";
+			public const string zup_account_zup_lab_ocorrencia_918 = "zup_account_zup_lab_ocorrencia_918";
 		}
 		
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Contact(System.Guid id) : 
+		public Account(System.Guid id) : 
 				base(EntityLogicalName, id)
 		{
 		}
 		
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Contact(string keyName, object keyValue) : 
+		public Account(string keyName, object keyValue) : 
 				base(EntityLogicalName, keyName, keyValue)
 		{
 		}
 		
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Contact(Microsoft.Xrm.Sdk.KeyAttributeCollection keyAttributes) : 
+		public Account(Microsoft.Xrm.Sdk.KeyAttributeCollection keyAttributes) : 
 				base(EntityLogicalName, keyAttributes)
 		{
 		}
@@ -798,97 +822,179 @@ namespace DataverseModel
 		/// Default Constructor.
 		/// </summary>
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Contact() : 
+		public Account() : 
 				base(EntityLogicalName)
 		{
 		}
 		
-		public const string PrimaryIdAttribute = "contactid";
+		public const string PrimaryIdAttribute = "accountid";
 		
-		public const string PrimaryNameAttribute = "fullname";
+		public const string PrimaryNameAttribute = "name";
 		
-		public const string EntitySchemaName = "Contact";
+		public const string EntitySchemaName = "Account";
 		
-		public const string EntityLogicalName = "contact";
+		public const string EntityLogicalName = "account";
 		
-		public const string EntityLogicalCollectionName = "contacts";
+		public const string EntityLogicalCollectionName = "accounts";
 		
-		public const string EntitySetName = "contacts";
-		
-		/// <summary>
-		/// Identificador exclusivo da conta à qual o contato está associado.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
-		public Microsoft.Xrm.Sdk.EntityReference AccountId
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("accountid");
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountidname")]
-		public string AccountIdName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("accountid"))
-				{
-					return this.FormattedValues["accountid"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountidyominame")]
-		public string AccountIdYomiName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("accountid"))
-				{
-					return this.FormattedValues["accountid"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
+		public const string EntitySetName = "accounts";
 		
 		/// <summary>
-		/// Escolha a função do contato dentro da empresa ou o processo de vendas, como o tomador de decisão, o funcionário ou o influenciador.
+		/// Escolha uma categoria para indicar se a conta de cliente é padrão ou preferencial.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountrolecode")]
-		public virtual Contact_AccountRoleCode? AccountRoleCode
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountcategorycode")]
+		public virtual Account_AccountCategoryCode? AccountCategoryCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_AccountRoleCode?)(EntityOptionSetEnum.GetEnum(this, "accountrolecode")));
+				return ((Account_AccountCategoryCode?)(EntityOptionSetEnum.GetEnum(this, "accountcategorycode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("accountrolecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.SetAttributeValue("accountcategorycode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountrolecodename")]
-		public string AccountRoleCodeName
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountcategorycodename")]
+		public string AccountCategoryCodeName
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				if (this.FormattedValues.Contains("accountrolecode"))
+				if (this.FormattedValues.Contains("accountcategorycode"))
 				{
-					return this.FormattedValues["accountrolecode"];
+					return this.FormattedValues["accountcategorycode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Escolha um código de classificação para indicar o valor potencial da conta do cliente com base no retorno sobre o investimento projetado, no nível de cooperação, na duração do ciclo de vendas ou outros critérios.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountclassificationcode")]
+		public virtual Account_AccountClassificationCode? AccountClassificationCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Account_AccountClassificationCode?)(EntityOptionSetEnum.GetEnum(this, "accountclassificationcode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("accountclassificationcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountclassificationcodename")]
+		public string AccountClassificationCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("accountclassificationcode"))
+				{
+					return this.FormattedValues["accountclassificationcode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Identificador exclusivo da conta.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
+		public System.Nullable<System.Guid> AccountId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("accountid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("accountid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.AccountId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Digite um número de ID ou código para a conta para pesquisar e identificar rapidamente a conta em exibições do sistema.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountnumber")]
+		public string AccountNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("accountnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("accountnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// Escolha uma classificação para indicar o valor da conta do cliente.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountratingcode")]
+		public virtual Account_AccountRatingCode? AccountRatingCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Account_AccountRatingCode?)(EntityOptionSetEnum.GetEnum(this, "accountratingcode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("accountratingcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountratingcodename")]
+		public string AccountRatingCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("accountratingcode"))
+				{
+					return this.FormattedValues["accountratingcode"];
 				}
 				else
 				{
@@ -919,12 +1025,12 @@ namespace DataverseModel
 		/// Escolha o tipo do endereço principal.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_addresstypecode")]
-		public virtual Contact_Address1_AddressTypeCode? Address1_AddressTypeCode
+		public virtual Account_Address1_AddressTypeCode? Address1_AddressTypeCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_Address1_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address1_addresstypecode")));
+				return ((Account_Address1_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address1_addresstypecode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -1039,12 +1145,12 @@ namespace DataverseModel
 		/// Escolha as condições de frete do endereço principal para garantir que as ordens de remessa sejam processadas corretamente.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_freighttermscode")]
-		public virtual Contact_Address1_FreightTermsCode? Address1_FreightTermsCode
+		public virtual Account_Address1_FreightTermsCode? Address1_FreightTermsCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_Address1_FreightTermsCode?)(EntityOptionSetEnum.GetEnum(this, "address1_freighttermscode")));
+				return ((Account_Address1_FreightTermsCode?)(EntityOptionSetEnum.GetEnum(this, "address1_freighttermscode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -1236,12 +1342,12 @@ namespace DataverseModel
 		/// Escolha uma forma de transporte para entregas enviadas para este endereço.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_shippingmethodcode")]
-		public virtual Contact_Address1_ShippingMethodCode? Address1_ShippingMethodCode
+		public virtual Account_Address1_ShippingMethodCode? Address1_ShippingMethodCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_Address1_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address1_shippingmethodcode")));
+				return ((Account_Address1_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address1_shippingmethodcode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -1397,12 +1503,12 @@ namespace DataverseModel
 		/// Escolha o tipo do endereço secundário.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_addresstypecode")]
-		public virtual Contact_Address2_AddressTypeCode? Address2_AddressTypeCode
+		public virtual Account_Address2_AddressTypeCode? Address2_AddressTypeCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_Address2_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address2_addresstypecode")));
+				return ((Account_Address2_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address2_addresstypecode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -1517,12 +1623,12 @@ namespace DataverseModel
 		/// Escolha as condições de frete do endereço secundário para garantir que as ordens de remessa sejam processadas corretamente.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_freighttermscode")]
-		public virtual Contact_Address2_FreightTermsCode? Address2_FreightTermsCode
+		public virtual Account_Address2_FreightTermsCode? Address2_FreightTermsCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_Address2_FreightTermsCode?)(EntityOptionSetEnum.GetEnum(this, "address2_freighttermscode")));
+				return ((Account_Address2_FreightTermsCode?)(EntityOptionSetEnum.GetEnum(this, "address2_freighttermscode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -1714,12 +1820,12 @@ namespace DataverseModel
 		/// Escolha uma forma de transporte para entregas enviadas para este endereço.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_shippingmethodcode")]
-		public virtual Contact_Address2_ShippingMethodCode? Address2_ShippingMethodCode
+		public virtual Account_Address2_ShippingMethodCode? Address2_ShippingMethodCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_Address2_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address2_shippingmethodcode")));
+				return ((Account_Address2_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address2_shippingmethodcode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -1853,516 +1959,6 @@ namespace DataverseModel
 			}
 		}
 		
-		/// <summary>
-		/// Identificador exclusivo do endereço 3.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_addressid")]
-		public System.Nullable<System.Guid> Address3_AddressId
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.Guid>>("address3_addressid");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_addressid", value);
-			}
-		}
-		
-		/// <summary>
-		/// Selecione o terceiro tipo de endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_addresstypecode")]
-		public virtual Contact_Address3_AddressTypeCode? Address3_AddressTypeCode
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return ((Contact_Address3_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address3_addresstypecode")));
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_addresstypecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_addresstypecodename")]
-		public string Address3_AddressTypeCodeName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("address3_addresstypecode"))
-				{
-					return this.FormattedValues["address3_addresstypecode"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Digite a cidade do 3º endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_city")]
-		public string Address3_City
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_city");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_city", value);
-			}
-		}
-		
-		/// <summary>
-		/// Mostra o terceiro endereço completo.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_composite")]
-		public string Address3_Composite
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_composite");
-			}
-		}
-		
-		/// <summary>
-		/// o país ou região do 3º endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_country")]
-		public string Address3_Country
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_country");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_country", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o município do terceiro endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_county")]
-		public string Address3_County
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_county");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_county", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número do fax associado ao terceiro endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_fax")]
-		public string Address3_Fax
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_fax");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_fax", value);
-			}
-		}
-		
-		/// <summary>
-		/// Escolha as condições de frete do terceiro endereço para garantir que as ordens de remessa sejam processadas corretamente.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_freighttermscode")]
-		public virtual Contact_Address3_FreightTermsCode? Address3_FreightTermsCode
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return ((Contact_Address3_FreightTermsCode?)(EntityOptionSetEnum.GetEnum(this, "address3_freighttermscode")));
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_freighttermscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_freighttermscodename")]
-		public string Address3_FreightTermsCodeName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("address3_freighttermscode"))
-				{
-					return this.FormattedValues["address3_freighttermscode"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Digite o valor da latitude do terceiro endereço para uso no mapeamento e em outros aplicativos.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_latitude")]
-		public System.Nullable<double> Address3_Latitude
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<double>>("address3_latitude");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_latitude", value);
-			}
-		}
-		
-		/// <summary>
-		/// a primeira linha do 3º endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_line1")]
-		public string Address3_Line1
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_line1");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_line1", value);
-			}
-		}
-		
-		/// <summary>
-		/// a segunda linha do 3º endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_line2")]
-		public string Address3_Line2
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_line2");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_line2", value);
-			}
-		}
-		
-		/// <summary>
-		/// a terceira linha do 3º endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_line3")]
-		public string Address3_Line3
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_line3");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_line3", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o valor da longitude do terceiro endereço para uso no mapeamento e em outros aplicativos.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_longitude")]
-		public System.Nullable<double> Address3_Longitude
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<double>>("address3_longitude");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_longitude", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite um nome descritivo para o terceiro endereço, como Matriz Corporativa.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_name")]
-		public string Address3_Name
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_name");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_name", value);
-			}
-		}
-		
-		/// <summary>
-		/// o CEP do 3º endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_postalcode")]
-		public string Address3_PostalCode
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_postalcode");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_postalcode", value);
-			}
-		}
-		
-		/// <summary>
-		/// o número da caixa postal do 3º endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_postofficebox")]
-		public string Address3_PostOfficeBox
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_postofficebox");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_postofficebox", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o nome do contato principal no terceiro endereço da conta.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_primarycontactname")]
-		public string Address3_PrimaryContactName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_primarycontactname");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_primarycontactname", value);
-			}
-		}
-		
-		/// <summary>
-		/// Escolha uma forma de transporte para entregas enviadas para este endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_shippingmethodcode")]
-		public virtual Contact_Address3_ShippingMethodCode? Address3_ShippingMethodCode
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return ((Contact_Address3_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address3_shippingmethodcode")));
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_shippingmethodcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_shippingmethodcodename")]
-		public string Address3_ShippingMethodCodeName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("address3_shippingmethodcode"))
-				{
-					return this.FormattedValues["address3_shippingmethodcode"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// o estado ou província do terceiro endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_stateorprovince")]
-		public string Address3_StateOrProvince
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_stateorprovince");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_stateorprovince", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número do telefone principal associado ao terceiro endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_telephone1")]
-		public string Address3_Telephone1
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_telephone1");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_telephone1", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite um segundo número de telefone associado ao terceiro endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_telephone2")]
-		public string Address3_Telephone2
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_telephone2");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_telephone2", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite um terceiro número de telefone associado ao endereço principal.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_telephone3")]
-		public string Address3_Telephone3
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_telephone3");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_telephone3", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite a zona UPS do terceiro endereço para garantir que os encargos de remessa sejam calculados corretamente e as entregas sejam feitas imediatamente, quando enviado por UPS.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_upszone")]
-		public string Address3_UPSZone
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("address3_upszone");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_upszone", value);
-			}
-		}
-		
-		/// <summary>
-		/// Escolha o fuso horário ou a compensação UTC deste endereço para que outras pessoas possam fazer referência a ele ao contatar alguém nesse endereço.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address3_utcoffset")]
-		public System.Nullable<int> Address3_UTCOffset
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<int>>("address3_utcoffset");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("address3_utcoffset", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_confirmremovepassword")]
-		public System.Nullable<bool> adx_ConfirmRemovePassword
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_confirmremovepassword");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_confirmremovepassword", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_confirmremovepasswordname")]
-		public string adx_confirmremovepasswordName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_confirmremovepassword"))
-				{
-					return this.FormattedValues["adx_confirmremovepassword"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_createdbyipaddress")]
 		public string Adx_CreatedByIPAddress
 		{
@@ -2390,336 +1986,6 @@ namespace DataverseModel
 			set
 			{
 				this.SetAttributeValue("adx_createdbyusername", value);
-			}
-		}
-		
-		/// <summary>
-		/// Mostra a contagem atual das tentativas de senha falhas para o contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_accessfailedcount")]
-		public System.Nullable<int> adx_identity_accessfailedcount
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<int>>("adx_identity_accessfailedcount");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_accessfailedcount", value);
-			}
-		}
-		
-		/// <summary>
-		/// Determina se o email está confirmado pelo contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_emailaddress1confirmed")]
-		public System.Nullable<bool> adx_identity_emailaddress1confirmed
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_identity_emailaddress1confirmed");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_emailaddress1confirmed", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_emailaddress1confirmedname")]
-		public string adx_identity_emailaddress1confirmedName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_identity_emailaddress1confirmed"))
-				{
-					return this.FormattedValues["adx_identity_emailaddress1confirmed"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Indica a última data e hora em que o usuário fez logon com êxito em um portal.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_lastsuccessfullogin")]
-		public System.Nullable<System.DateTime> adx_identity_lastsuccessfullogin
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.DateTime>>("adx_identity_lastsuccessfullogin");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_lastsuccessfullogin", value);
-			}
-		}
-		
-		/// <summary>
-		/// Indica que o contato não poderá mais entrar no portal usando a conta local.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_locallogindisabled")]
-		public System.Nullable<bool> adx_identity_locallogindisabled
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_identity_locallogindisabled");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_locallogindisabled", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_locallogindisabledname")]
-		public string adx_identity_locallogindisabledName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_identity_locallogindisabled"))
-				{
-					return this.FormattedValues["adx_identity_locallogindisabled"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Determina se este contato acompanhará as tentativas falhas de acesso e será bloqueado depois de muitas tentativas. Para prevenir que o contato seja bloqueado, você pode desabilitar esta configuração.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_lockoutenabled")]
-		public System.Nullable<bool> adx_identity_lockoutenabled
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_identity_lockoutenabled");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_lockoutenabled", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_lockoutenabledname")]
-		public string adx_identity_lockoutenabledName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_identity_lockoutenabled"))
-				{
-					return this.FormattedValues["adx_identity_lockoutenabled"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Mostra o momento quando o contato bloqueado foi novamente desbloqueado.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_lockoutenddate")]
-		public System.Nullable<System.DateTime> adx_identity_lockoutenddate
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.DateTime>>("adx_identity_lockoutenddate");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_lockoutenddate", value);
-			}
-		}
-		
-		/// <summary>
-		/// Determina se a autenticação da web está habilitada para o contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_logonenabled")]
-		public System.Nullable<bool> adx_identity_logonenabled
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_identity_logonenabled");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_logonenabled", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_logonenabledname")]
-		public string adx_identity_logonenabledName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_identity_logonenabled"))
-				{
-					return this.FormattedValues["adx_identity_logonenabled"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Determina se o número de telefone está confirmado pelo contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_mobilephoneconfirmed")]
-		public System.Nullable<bool> adx_identity_mobilephoneconfirmed
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_identity_mobilephoneconfirmed");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_mobilephoneconfirmed", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_mobilephoneconfirmedname")]
-		public string adx_identity_mobilephoneconfirmedName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_identity_mobilephoneconfirmed"))
-				{
-					return this.FormattedValues["adx_identity_mobilephoneconfirmed"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_newpassword")]
-		public string adx_identity_newpassword
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("adx_identity_newpassword");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_newpassword", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_passwordhash")]
-		public string adx_identity_passwordhash
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("adx_identity_passwordhash");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_passwordhash", value);
-			}
-		}
-		
-		/// <summary>
-		/// Um token usado para gerenciar a sessão de autenticação da web.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_securitystamp")]
-		public string adx_identity_securitystamp
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("adx_identity_securitystamp");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_securitystamp", value);
-			}
-		}
-		
-		/// <summary>
-		/// Determina se a autenticação de dois fatores está habilitada para o contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_twofactorenabled")]
-		public System.Nullable<bool> adx_identity_twofactorenabled
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_identity_twofactorenabled");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_twofactorenabled", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_twofactorenabledname")]
-		public string adx_identity_twofactorenabledName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_identity_twofactorenabled"))
-				{
-					return this.FormattedValues["adx_identity_twofactorenabled"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Mostra a identidade do usuário para a autenticação da web local.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_identity_username")]
-		public string adx_identity_username
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("adx_identity_username");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_identity_username", value);
 			}
 		}
 		
@@ -2753,193 +2019,6 @@ namespace DataverseModel
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_organizationname")]
-		public string Adx_OrganizationName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("adx_organizationname");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_organizationname", value);
-			}
-		}
-		
-		/// <summary>
-		/// LCID do portal preferido do usuário
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_preferredlcid")]
-		public System.Nullable<int> adx_preferredlcid
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<int>>("adx_preferredlcid");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_preferredlcid", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_profilealert")]
-		public System.Nullable<bool> adx_profilealert
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_profilealert");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_profilealert", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_profilealertdate")]
-		public System.Nullable<System.DateTime> adx_profilealertdate
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.DateTime>>("adx_profilealertdate");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_profilealertdate", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_profilealertinstructions")]
-		public string adx_profilealertinstructions
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("adx_profilealertinstructions");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_profilealertinstructions", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_profilealertname")]
-		public string adx_profilealertName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_profilealert"))
-				{
-					return this.FormattedValues["adx_profilealert"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_profileisanonymous")]
-		public System.Nullable<bool> Adx_ProfileIsAnonymous
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("adx_profileisanonymous");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_profileisanonymous", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_profileisanonymousname")]
-		public string adx_profileisanonymousName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("adx_profileisanonymous"))
-				{
-					return this.FormattedValues["adx_profileisanonymous"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_profilelastactivity")]
-		public System.Nullable<System.DateTime> Adx_ProfileLastActivity
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.DateTime>>("adx_profilelastactivity");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_profilelastactivity", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_profilemodifiedon")]
-		public System.Nullable<System.DateTime> adx_profilemodifiedon
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.DateTime>>("adx_profilemodifiedon");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_profilemodifiedon", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_publicprofilecopy")]
-		public string adx_PublicProfileCopy
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("adx_publicprofilecopy");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_publicprofilecopy", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_timezone")]
-		public System.Nullable<int> Adx_TimeZone
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<int>>("adx_timezone");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("adx_timezone", value);
-			}
-		}
-		
 		/// <summary>
 		/// Somente para uso do sistema.
 		/// </summary>
@@ -2954,7 +2033,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Mostra o campo Vencimento em 30 dias convertido na moeda base padrão do sistema. Os cálculos usam a taxa de conversão especificada na área Moedas.
+		/// O equivalente em moeda base do campo de vencimento em 30 dias.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aging30_base")]
 		public Microsoft.Xrm.Sdk.Money Aging30_Base
@@ -2980,7 +2059,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Mostra o campo Vencimento em 60 dias convertido na moeda base padrão do sistema. Os cálculos usam a taxa de conversão especificada na área Moedas.
+		/// O equivalente em moeda base do campo de vencimento em 60 dias.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aging60_base")]
 		public Microsoft.Xrm.Sdk.Money Aging60_Base
@@ -3006,7 +2085,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Mostra o campo Vencimento em 90 dias convertido na moeda base padrão do sistema. Os cálculos usam a taxa de conversão especificada na área Moedas.
+		/// O equivalente em moeda base do campo de vencimento em 90 dias.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aging90_base")]
 		public Microsoft.Xrm.Sdk.Money Aging90_Base
@@ -3019,218 +2098,37 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Insira a data do aniversário de casamento ou de serviço do contato para uso em programas de presentes para clientes ou outras comunicações.
+		/// Escolha a designação legal ou outro tipo de empresa da conta para fins de contratos ou relatórios.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("anniversary")]
-		public System.Nullable<System.DateTime> Anniversary
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businesstypecode")]
+		public virtual Account_BusinessTypeCode? BusinessTypeCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<System.DateTime>>("anniversary");
+				return ((Account_BusinessTypeCode?)(EntityOptionSetEnum.GetEnum(this, "businesstypecode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("anniversary", value);
+				this.SetAttributeValue("businesstypecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 			}
 		}
 		
-		/// <summary>
-		/// Digite a receita anual do contato para uso na criação de perfil e na análise financeira.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("annualincome")]
-		public Microsoft.Xrm.Sdk.Money AnnualIncome
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businesstypecodename")]
+		public string BusinessTypeCodeName
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("annualincome");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("annualincome", value);
-			}
-		}
-		
-		/// <summary>
-		/// Mostra o campo Receita Anual convertida na moeda base padrão do sistema. Os cálculos usam a taxa de conversão especificada na área Moedas.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("annualincome_base")]
-		public Microsoft.Xrm.Sdk.Money AnnualIncome_Base
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("annualincome_base");
-			}
-		}
-		
-		/// <summary>
-		/// Digite o nome do assistente do contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("assistantname")]
-		public string AssistantName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("assistantname");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("assistantname", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número do telefone do assistente do contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("assistantphone")]
-		public string AssistantPhone
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("assistantphone");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("assistantphone", value);
-			}
-		}
-		
-		/// <summary>
-		/// Insira a data do aniversário do contato para uso em programas de presentes para clientes ou outras comunicações.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("birthdate")]
-		public System.Nullable<System.DateTime> BirthDate
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.DateTime>>("birthdate");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("birthdate", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite um segundo número do telefone comercial deste contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("business2")]
-		public string Business2
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("business2");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("business2", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite um segundo número do telefone para retorno de chamada deste contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("callback")]
-		public string Callback
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("callback");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("callback", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite os nomes dos filhos do contato para referência em comunicações e programas de clientes.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("childrensnames")]
-		public string ChildrensNames
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("childrensnames");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("childrensnames", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o telefone da empresa do contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("company")]
-		public string Company
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("company");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("company", value);
-			}
-		}
-		
-		/// <summary>
-		/// Identificador exclusivo do contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contactid")]
-		public System.Nullable<System.Guid> ContactId
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.Guid>>("contactid");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("contactid", value);
-				if (value.HasValue)
+				if (this.FormattedValues.Contains("businesstypecode"))
 				{
-					base.Id = value.Value;
+					return this.FormattedValues["businesstypecode"];
 				}
 				else
 				{
-					base.Id = System.Guid.Empty;
+					return default(string);
 				}
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contactid")]
-		public override System.Guid Id
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return base.Id;
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.ContactId = value;
 			}
 		}
 		
@@ -3394,7 +2292,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite o limite de crédito do contato para referência ao resolver problemas de faturamento e de contabilidade com o cliente.
+		/// Digite o limite de crédito da conta. Isso é uma referência útil para resolver problemas de faturamento e de contabilidade com o cliente.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("creditlimit")]
 		public Microsoft.Xrm.Sdk.Money CreditLimit
@@ -3412,7 +2310,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Mostra o campo Limite de Crédito convertido na moeda base padrão do sistema para fins de relatórios. Os cálculos usam a taxa de conversão especificada na área Moedas.
+		/// Mostra o limite de crédito convertido na moeda base padrão do sistema para fins de relatórios.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("creditlimit_base")]
 		public Microsoft.Xrm.Sdk.Money CreditLimit_Base
@@ -3425,7 +2323,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato está em suspensão de crédito, para referência ao resolver problemas de faturamento e de contabilidade.
+		/// Escolha se o crédito da conta está suspenso. Essa é uma referência útil ao resolver problemas de faturamento e de contabilidade com o cliente.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("creditonhold")]
 		public System.Nullable<bool> CreditOnHold
@@ -3460,15 +2358,15 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha o tamanho da empresa do contato para fins de segmentação e relatórios.
+		/// Escolha a categoria ou o intervalo de tamanho da conta para fins de segmentação e relatórios.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customersizecode")]
-		public virtual Contact_CustomerSizeCode? CustomerSizeCode
+		public virtual Account_CustomerSizeCode? CustomerSizeCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_CustomerSizeCode?)(EntityOptionSetEnum.GetEnum(this, "customersizecode")));
+				return ((Account_CustomerSizeCode?)(EntityOptionSetEnum.GetEnum(this, "customersizecode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -3495,15 +2393,15 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha a categoria que melhor descreve o relacionamento entre o contato e sua organização.
+		/// Escolha a categoria que melhor descreve o relacionamento entre a conta e sua organização.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customertypecode")]
-		public virtual Contact_CustomerTypeCode? CustomerTypeCode
+		public virtual Account_CustomerTypeCode? CustomerTypeCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_CustomerTypeCode?)(EntityOptionSetEnum.GetEnum(this, "customertypecode")));
+				return ((Account_CustomerTypeCode?)(EntityOptionSetEnum.GetEnum(this, "customertypecode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -3530,25 +2428,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite o departamento ou a unidade de negócios onde o contato trabalha na empresa ou negócio primário.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("department")]
-		public string Department
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("department");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("department", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite informações adicionais para descrever o contato, como um extrato do site da empresa.
+		/// Digite informações adicionais para descrever a conta, como um extrato do site da empresa.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
 		public string Description
@@ -3566,7 +2446,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato aceita envio de email em massa em campanhas de marketing ou rápidas. Se Não Permitir estiver escolhido, o contato poderá ser adicionado às listas de marketing, mas será excluído do email.
+		/// Escolha se a conta permite o envio de email em massa em campanhas. Se Não Permitir estiver escolhido, a conta poderá ser adicionada às listas de marketing, mas será excluída de email.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotbulkemail")]
 		public System.Nullable<bool> DoNotBulkEMail
@@ -3601,7 +2481,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato aceita envio de correio em massa em campanhas de marketing ou rápidas. Se Não Permitir estiver escolhido, o contato poderá ser adicionado às listas de marketing, mas será excluído de cartas.
+		/// Escolha se a conta permite o envio de correio em massa em campanhas de marketing ou rápidas. Se Não Permitir estiver escolhido, a conta poderá ser adicionada às listas de marketing, mas será excluída do correio.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotbulkpostalmail")]
 		public System.Nullable<bool> DoNotBulkPostalMail
@@ -3636,7 +2516,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato permite o envio de email direto do Microsoft Dynamics 365. Se Não Permitir estiver escolhido, o Microsoft Dynamics 365 não enviará o email.
+		/// Escolha se a conta permite o envio de email direto do Microsoft Dynamics 365.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotemail")]
 		public System.Nullable<bool> DoNotEMail
@@ -3671,7 +2551,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato permite fax. Se Não Permitir estiver escolhido, o contato será excluído de todas as atividades de fax distribuídas em campanhas de marketing.
+		/// Escolha se a conta permite fax. Se Não Permitir estiver escolhido, a conta será excluída das atividades de fax distribuídas em campanhas de marketing.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotfax")]
 		public System.Nullable<bool> DoNotFax
@@ -3706,7 +2586,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato aceita telefonemas. Se Não Permitir estiver escolhido, o contato será excluído de todas as atividades de telefonemas distribuídas em campanhas de marketing.
+		/// Escolha se a conta permite telefonemas. Se Não Permitir estiver escolhido, a conta será excluída das atividades de telefonema distribuídas em campanhas de marketing.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotphone")]
 		public System.Nullable<bool> DoNotPhone
@@ -3741,7 +2621,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato permite email direto. Se Não Permitir estiver escolhido, o contato será excluído das atividades de cartas distribuídas em campanhas de marketing.
+		/// Escolha se a conta permite email direto. Se Não Permitir estiver escolhido, a conta será excluída das atividades de cartas distribuídas em campanhas de marketing.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotpostalmail")]
 		public System.Nullable<bool> DoNotPostalMail
@@ -3793,7 +2673,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato aceita materiais de marketing, como brochuras ou catálogos. Os contatos que recusarem podem ser excluídos das iniciativas de marketing.
+		/// Escolha se a conta aceita materiais de marketing, como brochuras ou catálogos.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotsendmm")]
 		public System.Nullable<bool> DoNotSendMM
@@ -3811,42 +2691,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha o mais alto nível de formação acadêmica do contato para uso em segmentação de marketing e análise.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("educationcode")]
-		public virtual Contact_EducationCode? EducationCode
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return ((Contact_EducationCode?)(EntityOptionSetEnum.GetEnum(this, "educationcode")));
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("educationcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("educationcodename")]
-		public string EducationCodeName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("educationcode"))
-				{
-					return this.FormattedValues["educationcode"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Digite o endereço de email principal do contato.
+		/// Digite o endereço de email principal da conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddress1")]
 		public string EMailAddress1
@@ -3864,7 +2709,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite o endereço de email secundário do contato.
+		/// Digite o endereço de email secundário da conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddress2")]
 		public string EMailAddress2
@@ -3882,7 +2727,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite o endereço de email alternativo do contato.
+		/// Digite o endereço de email alternativo da conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddress3")]
 		public string EMailAddress3
@@ -3896,24 +2741,6 @@ namespace DataverseModel
 			set
 			{
 				this.SetAttributeValue("emailaddress3", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite a ID ou o número de funcionário do contato para referência em ordens, ocorrências de serviços ou outras comunicações com a organização do contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("employeeid")]
-		public string EmployeeId
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("employeeid");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("employeeid", value);
 			}
 		}
 		
@@ -3982,60 +2809,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Identificador de um usuário externo.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("externaluseridentifier")]
-		public string ExternalUserIdentifier
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("externaluseridentifier");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("externaluseridentifier", value);
-			}
-		}
-		
-		/// <summary>
-		/// Escolha o estado civil do contato para referência em telefonemas de acompanhamento e outras comunicações.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("familystatuscode")]
-		public virtual Contact_FamilyStatusCode? FamilyStatusCode
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return ((Contact_FamilyStatusCode?)(EntityOptionSetEnum.GetEnum(this, "familystatuscode")));
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("familystatuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("familystatuscodename")]
-		public string FamilyStatusCodeName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("familystatuscode"))
-				{
-					return this.FormattedValues["familystatuscode"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número do fax do contato.
+		/// Digite o número do fax da conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fax")]
 		public string Fax
@@ -4053,25 +2827,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite o nome do contato para garantir que o contato seja tratado corretamente em chamadas de vendas, emails e campanhas de marketing.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("firstname")]
-		public string FirstName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("firstname");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("firstname", value);
-			}
-		}
-		
-		/// <summary>
-		/// Informações que especificam se será permitido acompanhar atividades de email, como aberturas, exibições de anexo e cliques em links nos emails enviados ao contato.
+		/// Informações que especificam se será permitido acompanhar atividades de email, como aberturas, exibições de anexo e cliques em links nos emails enviados à conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("followemail")]
 		public System.Nullable<bool> FollowEmail
@@ -4106,10 +2862,10 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite a URL do site de FTP do contato para permitir que os usuários acessem dados e compartilhem documentos.
+		/// Digite a URL do site de FTP da conta para permitir que os usuários acessem dados e compartilhem documentos.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ftpsiteurl")]
-		public string FtpSiteUrl
+		public string FtpSiteURL
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -4120,125 +2876,6 @@ namespace DataverseModel
 			set
 			{
 				this.SetAttributeValue("ftpsiteurl", value);
-			}
-		}
-		
-		/// <summary>
-		/// Combina e mostra o nome e o sobrenome do contato, para que o nome completo possa ser mostrado em exibições e relatórios.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fullname")]
-		public string FullName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("fullname");
-			}
-		}
-		
-		/// <summary>
-		/// Escolha o sexo do contato para garantir que o contato seja tratado corretamente em chamadas de vendas, emails e campanhas de marketing.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("gendercode")]
-		public virtual Contact_GenderCode? GenderCode
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return ((Contact_GenderCode?)(EntityOptionSetEnum.GetEnum(this, "gendercode")));
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("gendercode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("gendercodename")]
-		public string GenderCodeName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("gendercode"))
-				{
-					return this.FormattedValues["gendercode"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número do passaporte ou de outra ID do governo do contato para uso em documentos ou relatórios.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("governmentid")]
-		public string GovernmentId
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("governmentid");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("governmentid", value);
-			}
-		}
-		
-		/// <summary>
-		/// Escolha se o contato tem filhos para referência em telefonemas de acompanhamento e outras comunicações.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("haschildrencode")]
-		public virtual Contact_HasChildrenCode? HasChildrenCode
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return ((Contact_HasChildrenCode?)(EntityOptionSetEnum.GetEnum(this, "haschildrencode")));
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("haschildrencode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("haschildrencodename")]
-		public string HasChildrenCodeName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("haschildrencode"))
-				{
-					return this.FormattedValues["haschildrencode"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Digite um segundo número do telefone residencial deste contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("home2")]
-		public string Home2
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("home2");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("home2", value);
 			}
 		}
 		
@@ -4261,32 +2898,32 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha se o contato existe em um sistema contábil ou outro sistema separado, como o Microsoft Dynamics GP ou outro banco de dados de ERP, para uso em processos de integração.
+		/// Escolha o setor principal da conta para uso em segmentação de marketing e análise demográfica.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbackofficecustomer")]
-		public System.Nullable<bool> IsBackofficeCustomer
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("industrycode")]
+		public virtual Account_IndustryCode? IndustryCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<bool>>("isbackofficecustomer");
+				return ((Account_IndustryCode?)(EntityOptionSetEnum.GetEnum(this, "industrycode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("isbackofficecustomer", value);
+				this.SetAttributeValue("industrycode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbackofficecustomername")]
-		public string IsBackofficeCustomerName
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("industrycodename")]
+		public string IndustryCodeName
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				if (this.FormattedValues.Contains("isbackofficecustomer"))
+				if (this.FormattedValues.Contains("industrycode"))
 				{
-					return this.FormattedValues["isbackofficecustomer"];
+					return this.FormattedValues["industrycode"];
 				}
 				else
 				{
@@ -4313,42 +2950,6 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite o cargo do contato para garantir que o contato seja tratado corretamente em chamadas de vendas, emails e campanhas de marketing.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("jobtitle")]
-		public string JobTitle
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("jobtitle");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("jobtitle", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o sobrenome do contato para garantir que o contato seja tratado corretamente em chamadas de vendas, emails e campanhas de marketing.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastname")]
-		public string LastName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("lastname");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("lastname", value);
-			}
-		}
-		
-		/// <summary>
 		/// Contém o carimbo de data e hora da última suspensão.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastonholdtime")]
@@ -4367,7 +2968,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Mostra a data em que o contato foi incluído pela última vez em uma campanha de marketing ou campanha rápida.
+		/// Mostra a data em que a conta foi incluída pela última vez em uma campanha de marketing ou campanha rápida.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastusedincampaign")]
 		public System.Nullable<System.DateTime> LastUsedInCampaign
@@ -4385,73 +2986,33 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha a origem de marketing principal que direcionou o contato para sua organização.
+		/// Digite a capitalização de mercado da conta para identificar o capital próprio da empresa, usado como um indicador em análises de desempenho financeiro.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("leadsourcecode")]
-		public virtual Contact_LeadSourceCode? LeadSourceCode
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("marketcap")]
+		public Microsoft.Xrm.Sdk.Money MarketCap
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_LeadSourceCode?)(EntityOptionSetEnum.GetEnum(this, "leadsourcecode")));
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("marketcap");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("leadsourcecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("leadsourcecodename")]
-		public string LeadSourceCodeName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("leadsourcecode"))
-				{
-					return this.FormattedValues["leadsourcecode"];
-				}
-				else
-				{
-					return default(string);
-				}
+				this.SetAttributeValue("marketcap", value);
 			}
 		}
 		
 		/// <summary>
-		/// Digite o nome do gerente do contato para uso em problemas de escalonamento ou outras comunicações de acompanhamento com o contato.
+		/// Mostra a capitalização de mercado convertida na moeda base padrão do sistema.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("managername")]
-		public string ManagerName
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("marketcap_base")]
+		public Microsoft.Xrm.Sdk.Money MarketCap_Base
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<string>("managername");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("managername", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número do telefone do gerente do contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("managerphone")]
-		public string ManagerPhone
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("managerphone");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("managerphone", value);
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("marketcap_base");
 			}
 		}
 		
@@ -4490,8 +3051,8 @@ namespace DataverseModel
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mastercontactidname")]
-		public string MasterContactIdName
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masteraccountidname")]
+		public string MasterAccountIdName
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -4507,8 +3068,8 @@ namespace DataverseModel
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mastercontactidyominame")]
-		public string MasterContactIdYomiName
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masteraccountidyominame")]
+		public string MasterAccountIdYomiName
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -4525,7 +3086,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Identificador exclusivo do contato mestre para mesclagem.
+		/// Mostra a conta mestra com a qual a conta foi mesclada.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masterid")]
 		public Microsoft.Xrm.Sdk.EntityReference MasterId
@@ -4538,7 +3099,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Mostra se a conta foi mesclada com um contato mestre.
+		/// Mostra se a conta foi mesclada com outra conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("merged")]
 		public System.Nullable<bool> Merged
@@ -4564,42 +3125,6 @@ namespace DataverseModel
 				{
 					return default(string);
 				}
-			}
-		}
-		
-		/// <summary>
-		/// Digite a inicial ou o nome do meio do contato para garantir que o contato seja tratado corretamente.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("middlename")]
-		public string MiddleName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("middlename");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("middlename", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número do celular do contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mobilephone")]
-		public string MobilePhone
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("mobilephone");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("mobilephone", value);
 			}
 		}
 		
@@ -4711,7 +3236,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Mostra quem atualizou o registro pela última vez em nome de outro usuário.
+		/// Mostra quem criou o registro em nome de outro usuário.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
@@ -4763,7 +3288,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Identificador exclusivo da Conta associada ao Contato.
+		/// Unique identifier for Account associated with Account.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msa_managingpartnerid")]
 		public Microsoft.Xrm.Sdk.EntityReference msa_managingpartnerid
@@ -4815,196 +3340,38 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Indica que o contato recusou o rastreamento Web.
+		/// Digite o nome da empresa ou do negócio.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_disablewebtracking")]
-		public System.Nullable<bool> msdyn_disablewebtracking
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_disablewebtracking");
+				return this.GetAttributeValue<string>("name");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("msdyn_disablewebtracking", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_disablewebtrackingname")]
-		public string msdyn_disablewebtrackingName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("msdyn_disablewebtracking"))
-				{
-					return this.FormattedValues["msdyn_disablewebtracking"];
-				}
-				else
-				{
-					return default(string);
-				}
+				this.SetAttributeValue("name", value);
 			}
 		}
 		
 		/// <summary>
-		/// Indica que o contato é considerado um menor em sua jurisdição.
+		/// Digite o número de funcionários que trabalham na conta para uso em segmentação de marketing e análise demográfica.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isminor")]
-		public System.Nullable<bool> msdyn_isminor
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("numberofemployees")]
+		public System.Nullable<int> NumberOfEmployees
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isminor");
+				return this.GetAttributeValue<System.Nullable<int>>("numberofemployees");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("msdyn_isminor", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isminorname")]
-		public string msdyn_isminorName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("msdyn_isminor"))
-				{
-					return this.FormattedValues["msdyn_isminor"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Indica que o contato é considerado um menor em sua jurisdição e tem o consentimento dos pais.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isminorwithparentalconsent")]
-		public System.Nullable<bool> msdyn_isminorwithparentalconsent
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isminorwithparentalconsent");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("msdyn_isminorwithparentalconsent", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isminorwithparentalconsentname")]
-		public string msdyn_isminorwithparentalconsentName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("msdyn_isminorwithparentalconsent"))
-				{
-					return this.FormattedValues["msdyn_isminorwithparentalconsent"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Indica a data e a hora em que a pessoa concordou com os termos e condições do portal.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_portaltermsagreementdate")]
-		public System.Nullable<System.DateTime> msdyn_portaltermsagreementdate
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_portaltermsagreementdate");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("msdyn_portaltermsagreementdate", value);
-			}
-		}
-		
-		/// <summary>
-		/// Idioma do portal preferido do usuário
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mspp_userpreferredlcid")]
-		public virtual powerpagelanguages? mspp_userpreferredlcid
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return ((powerpagelanguages?)(EntityOptionSetEnum.GetEnum(this, "mspp_userpreferredlcid")));
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("mspp_userpreferredlcid", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mspp_userpreferredlcidname")]
-		public string mspp_userpreferredlcidName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("mspp_userpreferredlcid"))
-				{
-					return this.FormattedValues["mspp_userpreferredlcid"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Digite o apelido do contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("nickname")]
-		public string NickName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("nickname");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("nickname", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número de filhos do contato para referência em telefonemas de acompanhamento e outras comunicações.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("numberofchildren")]
-		public System.Nullable<int> NumberOfChildren
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<int>>("numberofchildren");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("numberofchildren", value);
+				this.SetAttributeValue("numberofemployees", value);
 			}
 		}
 		
@@ -5092,7 +3459,42 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Identificador exclusivo da unidade de negócios que é proprietária do contato.
+		/// Escolha a estrutura da propriedade da conta, como pública ou privada.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownershipcode")]
+		public virtual Account_OwnershipCode? OwnershipCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Account_OwnershipCode?)(EntityOptionSetEnum.GetEnum(this, "ownershipcode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ownershipcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownershipcodename")]
+		public string OwnershipCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ownershipcode"))
+				{
+					return this.FormattedValues["ownershipcode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Mostra a unidade de negócios à qual o proprietário do registro pertence.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
 		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
@@ -5122,7 +3524,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Identificador exclusivo da equipe que possui o contato.
+		/// Identificador exclusivo da equipe que possui a conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
 		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
@@ -5135,7 +3537,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Identificador exclusivo do usuário que possui o contato.
+		/// Identificador exclusivo do usuário que é proprietário da conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		public Microsoft.Xrm.Sdk.EntityReference OwningUser
@@ -5148,45 +3550,32 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite o número do pager do contato.
+		/// Escolha a conta primária associada a esta conta para mostrar negócios primários e secundários em relatórios e análises.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pager")]
-		public string Pager
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentaccountid")]
+		public Microsoft.Xrm.Sdk.EntityReference ParentAccountId
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<string>("pager");
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentaccountid");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("pager", value);
+				this.SetAttributeValue("parentaccountid", value);
 			}
 		}
 		
-		/// <summary>
-		/// Identificador exclusivo do contato primário.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcontactid")]
-		public Microsoft.Xrm.Sdk.EntityReference ParentContactId
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentaccountidname")]
+		public string ParentAccountIdName
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentcontactid");
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcontactidname")]
-		public string ParentContactIdName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("parentcontactid"))
+				if (this.FormattedValues.Contains("parentaccountid"))
 				{
-					return this.FormattedValues["parentcontactid"];
+					return this.FormattedValues["parentaccountid"];
 				}
 				else
 				{
@@ -5195,15 +3584,15 @@ namespace DataverseModel
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcontactidyominame")]
-		public string ParentContactIdYomiName
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentaccountidyominame")]
+		public string ParentAccountIdYomiName
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				if (this.FormattedValues.Contains("parentcontactid"))
+				if (this.FormattedValues.Contains("parentaccountid"))
 				{
-					return this.FormattedValues["parentcontactid"];
+					return this.FormattedValues["parentaccountid"];
 				}
 				else
 				{
@@ -5213,59 +3602,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha a conta primária ou o contato principal do contato para fornecer um link rápido para detalhes adicionais, como informações financeiras, atividades e oportunidades.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcustomerid")]
-		public Microsoft.Xrm.Sdk.EntityReference ParentCustomerId
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentcustomerid");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("parentcustomerid", value);
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcustomeridname")]
-		public string ParentCustomerIdName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("parentcustomerid"))
-				{
-					return this.FormattedValues["parentcustomerid"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcustomeridyominame")]
-		public string ParentCustomerIdYomiName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				if (this.FormattedValues.Contains("parentcustomerid"))
-				{
-					return this.FormattedValues["parentcustomerid"];
-				}
-				else
-				{
-					return default(string);
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Mostra se o contato participa de regras de fluxo de trabalho.
+		/// Somente para uso do sistema. Dados de fluxo de trabalho herdados do Microsoft Dynamics CRM 3.0.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("participatesinworkflow")]
 		public System.Nullable<bool> ParticipatesInWorkflow
@@ -5303,12 +3640,12 @@ namespace DataverseModel
 		/// Escolha as condições de pagamento para indicar quando o cliente precisa pagar o valor total.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("paymenttermscode")]
-		public virtual Contact_PaymentTermsCode? PaymentTermsCode
+		public virtual Account_PaymentTermsCode? PaymentTermsCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_PaymentTermsCode?)(EntityOptionSetEnum.GetEnum(this, "paymenttermscode")));
+				return ((Account_PaymentTermsCode?)(EntityOptionSetEnum.GetEnum(this, "paymenttermscode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -5338,12 +3675,12 @@ namespace DataverseModel
 		/// Escolha o dia preferencial da semana para compromissos de serviço.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredappointmentdaycode")]
-		public virtual Contact_PreferredAppointmentDayCode? PreferredAppointmentDayCode
+		public virtual Account_PreferredAppointmentDayCode? PreferredAppointmentDayCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_PreferredAppointmentDayCode?)(EntityOptionSetEnum.GetEnum(this, "preferredappointmentdaycode")));
+				return ((Account_PreferredAppointmentDayCode?)(EntityOptionSetEnum.GetEnum(this, "preferredappointmentdaycode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -5373,12 +3710,12 @@ namespace DataverseModel
 		/// Escolha a hora preferencial do dia para compromissos de serviço.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredappointmenttimecode")]
-		public virtual Contact_PreferredAppointmentTimeCode? PreferredAppointmentTimeCode
+		public virtual Account_PreferredAppointmentTimeCode? PreferredAppointmentTimeCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_PreferredAppointmentTimeCode?)(EntityOptionSetEnum.GetEnum(this, "preferredappointmenttimecode")));
+				return ((Account_PreferredAppointmentTimeCode?)(EntityOptionSetEnum.GetEnum(this, "preferredappointmenttimecode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -5408,12 +3745,12 @@ namespace DataverseModel
 		/// Escolha o método preferencial de contato.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredcontactmethodcode")]
-		public virtual Contact_PreferredContactMethodCode? PreferredContactMethodCode
+		public virtual Account_PreferredContactMethodCode? PreferredContactMethodCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_PreferredContactMethodCode?)(EntityOptionSetEnum.GetEnum(this, "preferredcontactmethodcode")));
+				return ((Account_PreferredContactMethodCode?)(EntityOptionSetEnum.GetEnum(this, "preferredcontactmethodcode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -5440,7 +3777,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha o representante de serviço de atendimento ao consumidor preferencial do cliente para referência ao agendar atividades de serviço para o contato.
+		/// Escolha o representante de serviço preferencial para referência ao agendar atividades de serviço para a conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredsystemuserid")]
 		public Microsoft.Xrm.Sdk.EntityReference PreferredSystemUserId
@@ -5492,6 +3829,94 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
+		/// Escolha o contato principal da conta para fornecer acesso rápido aos detalhes do contato.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primarycontactid")]
+		public Microsoft.Xrm.Sdk.EntityReference PrimaryContactId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("primarycontactid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("primarycontactid", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primarycontactidname")]
+		public string PrimaryContactIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("primarycontactid"))
+				{
+					return this.FormattedValues["primarycontactid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primarycontactidyominame")]
+		public string PrimaryContactIdYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("primarycontactid"))
+				{
+					return this.FormattedValues["primarycontactid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// ID Principal do Satori da Conta
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primarysatoriid")]
+		public string PrimarySatoriId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("primarysatoriid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("primarysatoriid", value);
+			}
+		}
+		
+		/// <summary>
+		/// ID Principal do Twitter da Conta
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primarytwitterid")]
+		public string PrimaryTwitterId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("primarytwitterid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("primarytwitterid", value);
+			}
+		}
+		
+		/// <summary>
 		/// Mostra a ID do processo.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
@@ -5510,33 +3935,64 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite a saudação do contato para garantir que o contato seja tratado corretamente em chamadas de vendas, mensagens de email e campanhas de marketing.
+		/// Digite a receita anual da conta, usada como um indicador na análise do desempenho financeiro.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salutation")]
-		public string Salutation
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("revenue")]
+		public Microsoft.Xrm.Sdk.Money Revenue
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<string>("salutation");
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("revenue");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("salutation", value);
+				this.SetAttributeValue("revenue", value);
 			}
 		}
 		
 		/// <summary>
-		/// Escolha uma forma de transporte para entregas enviadas para este endereço.
+		/// Mostra a receita anual convertida na moeda base padrão do sistema. Os cálculos usam a taxa de conversão especificada na área Moedas.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shippingmethodcode")]
-		public virtual Contact_ShippingMethodCode? ShippingMethodCode
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("revenue_base")]
+		public Microsoft.Xrm.Sdk.Money Revenue_Base
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "shippingmethodcode")));
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("revenue_base");
+			}
+		}
+		
+		/// <summary>
+		/// Digite o número de ações da conta disponíveis ao público. Esse número é usado como um indicador em análises de desempenho financeiro.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sharesoutstanding")]
+		public System.Nullable<int> SharesOutstanding
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("sharesoutstanding");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sharesoutstanding", value);
+			}
+		}
+		
+		/// <summary>
+		/// Escolha uma forma de transporte para as entregas enviadas para o endereço da conta para designar a transportadora preferencial ou outra opção de entrega.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shippingmethodcode")]
+		public virtual Account_ShippingMethodCode? ShippingMethodCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Account_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "shippingmethodcode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -5563,7 +4019,25 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha o contrato de nível de serviço (SLA) que deseja aplicar ao registro do Contato.
+		/// Digite o CNAE (Código Nacional de Atividade Econômica) que indica o setor principal de negócios da conta, para uso em segmentação de marketing e análise demográfica.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sic")]
+		public string SIC
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("sic");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sic", value);
+			}
+		}
+		
+		/// <summary>
+		/// Escolha o contrato de nível de serviço (SLA) que deseja aplicar ao registro de Conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
 		public Microsoft.Xrm.Sdk.EntityReference SLAId
@@ -5628,24 +4102,6 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite o nome do cônjuge ou parceiro do contato para referência durante chamadas, eventos ou outras comunicações com o contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("spousesname")]
-		public string SpousesName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("spousesname");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("spousesname", value);
-			}
-		}
-		
-		/// <summary>
 		/// Mostra a ID do estágio.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
@@ -5664,15 +4120,15 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Mostra se o contato está ativo ou inativo. Contatos inativos são somente leitura e não podem ser editados a não ser que sejam reativados.
+		/// Mostra se a conta está ativa ou inativa. Contas inativas são somente leitura e não podem ser editadas a não ser que sejam reativadas.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public virtual contact_statecode? StateCode
+		public virtual account_statecode? StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((contact_statecode?)(EntityOptionSetEnum.GetEnum(this, "statecode")));
+				return ((account_statecode?)(EntityOptionSetEnum.GetEnum(this, "statecode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -5699,15 +4155,15 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha o status do contato.
+		/// Escolha o status da conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual Contact_StatusCode? StatusCode
+		public virtual Account_StatusCode? StatusCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+				return ((Account_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -5734,43 +4190,25 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Apenas para uso interno.
+		/// Digite a bolsa de valores na qual a conta está listada para acompanhar o desempenho financeiro e ações da empresa.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subscriptionid")]
-		public System.Nullable<System.Guid> SubscriptionId
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stockexchange")]
+		public string StockExchange
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<System.Guid>>("subscriptionid");
+				return this.GetAttributeValue<string>("stockexchange");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("subscriptionid", value);
+				this.SetAttributeValue("stockexchange", value);
 			}
 		}
 		
 		/// <summary>
-		/// Digite o sufixo usado no nome do contato, como Jr. ou Sr. para garantir que o contato seja tratado corretamente em chamadas de vendas, emails e campanhas de marketing.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("suffix")]
-		public string Suffix
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("suffix");
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetAttributeValue("suffix", value);
-			}
-		}
-		
-		/// <summary>
-		/// Digite o número do telefone principal deste contato.
+		/// Digite o número do telefone principal desta conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("telephone1")]
 		public string Telephone1
@@ -5788,7 +4226,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite um segundo número do telefone deste contato.
+		/// Digite um segundo número de telefone desta conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("telephone2")]
 		public string Telephone2
@@ -5806,7 +4244,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite um terceiro número de telefone deste contato.
+		/// Digite um terceiro número de telefone desta conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("telephone3")]
 		public string Telephone3
@@ -5824,15 +4262,15 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Escolha a região ou território do contato para uso em segmentação de marketing e análise demográfica.
+		/// Escolha a região ou território da conta para uso em segmentação de marketing e análise demográfica.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("territorycode")]
-		public virtual Contact_TerritoryCode? TerritoryCode
+		public virtual Account_TerritoryCode? TerritoryCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return ((Contact_TerritoryCode?)(EntityOptionSetEnum.GetEnum(this, "territorycode")));
+				return ((Account_TerritoryCode?)(EntityOptionSetEnum.GetEnum(this, "territorycode")));
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
@@ -5859,7 +4297,25 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Tempo total gasto por mim com emails (leitura e redação) e reuniões em relação ao registro do contato.
+		/// Digite o símbolo da bolsa de valores da conta para acompanhar o desempenho financeiro da empresa. Você pode clicar no código inserido neste campo para acessar as informações comerciais mais recentes no MSN Dinheiro.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tickersymbol")]
+		public string TickerSymbol
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("tickersymbol");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("tickersymbol", value);
+			}
+		}
+		
+		/// <summary>
+		/// Tempo total gasto por mim com emails (leitura e redação) e reuniões em relação ao registro da conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timespentbymeonemailandmeetings")]
 		public string TimeSpentByMeOnEmailAndMeetings
@@ -5961,7 +4417,7 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Número de versão do contato.
+		/// Número de versão da conta.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
 		public System.Nullable<long> VersionNumber
@@ -5974,10 +4430,10 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite a URL do site ou blog profissional ou pessoal do contato.
+		/// Digite a URL do site da conta para obter detalhes sobre o perfil da empresa.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("websiteurl")]
-		public string WebSiteUrl
+		public string WebSiteURL
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -5992,212 +4448,199 @@ namespace DataverseModel
 		}
 		
 		/// <summary>
-		/// Digite a ortografia fonética do nome do contato, se o nome for especificado em japonês, para garantir que o nome seja pronunciado corretamente em telefonemas com o contato.
+		/// Digite a ortografia fonética do nome da empresa, se especificado em japonês, para garantir que o nome seja pronunciado corretamente em telefonemas e outras comunicações.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yomifirstname")]
-		public string YomiFirstName
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yominame")]
+		public string YomiName
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<string>("yomifirstname");
+				return this.GetAttributeValue<string>("yominame");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("yomifirstname", value);
+				this.SetAttributeValue("yominame", value);
 			}
 		}
 		
 		/// <summary>
-		/// Mostra o nome e o sobrenome Yomi combinados do contato para que o nome fonético completo possa ser mostrado em exibições e relatórios.
+		/// 1:N account_master_account
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yomifullname")]
-		public string YomiFullName
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_master_account", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<DataverseModel.Account> Referencedaccount_master_account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<string>("yomifullname");
-			}
-		}
-		
-		/// <summary>
-		/// Digite a ortografia fonética do sobrenome do contato, se o nome for especificado em japonês, para garantir que o nome seja pronunciado corretamente em telefonemas com o contato.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yomilastname")]
-		public string YomiLastName
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetAttributeValue<string>("yomilastname");
+				return this.GetRelatedEntities<DataverseModel.Account>("account_master_account", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("yomilastname", value);
+				this.SetRelatedEntities<DataverseModel.Account>("account_master_account", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 			}
 		}
 		
 		/// <summary>
-		/// Digite a ortografia fonética do nome do meio do contato, se o nome for especificado em japonês, para garantir que o nome seja pronunciado corretamente em telefonemas com o contato.
+		/// 1:N account_parent_account
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yomimiddlename")]
-		public string YomiMiddleName
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_parent_account", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<DataverseModel.Account> Referencedaccount_parent_account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<string>("yomimiddlename");
+				return this.GetRelatedEntities<DataverseModel.Account>("account_parent_account", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetAttributeValue("yomimiddlename", value);
+				this.SetRelatedEntities<DataverseModel.Account>("account_parent_account", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 			}
 		}
 		
 		/// <summary>
-		/// 1:N account_primary_contact
+		/// 1:N contact_customer_accounts
 		/// </summary>
-		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_primary_contact")]
-		public System.Collections.Generic.IEnumerable<DataverseModel.Account> account_primary_contact
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetRelatedEntities<DataverseModel.Account>("account_primary_contact", null);
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetRelatedEntities<DataverseModel.Account>("account_primary_contact", null, value);
-			}
-		}
-		
-		/// <summary>
-		/// 1:N contact_customer_contacts
-		/// </summary>
-		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_customer_contacts", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DataverseModel.Contact> Referencedcontact_customer_contacts
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetRelatedEntities<DataverseModel.Contact>("contact_customer_contacts", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetRelatedEntities<DataverseModel.Contact>("contact_customer_contacts", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-			}
-		}
-		
-		/// <summary>
-		/// 1:N contact_master_contact
-		/// </summary>
-		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_master_contact", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<DataverseModel.Contact> Referencedcontact_master_contact
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetRelatedEntities<DataverseModel.Contact>("contact_master_contact", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetRelatedEntities<DataverseModel.Contact>("contact_master_contact", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-			}
-		}
-		
-		/// <summary>
-		/// 1:N zup_contact_zup_lab_ocorrencia_918
-		/// </summary>
-		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("zup_contact_zup_lab_ocorrencia_918")]
-		public System.Collections.Generic.IEnumerable<DataverseModel.zup_lab_ocorrencia> zup_contact_zup_lab_ocorrencia_918
-		{
-			[System.Diagnostics.DebuggerNonUserCode()]
-			get
-			{
-				return this.GetRelatedEntities<DataverseModel.zup_lab_ocorrencia>("zup_contact_zup_lab_ocorrencia_918", null);
-			}
-			[System.Diagnostics.DebuggerNonUserCode()]
-			set
-			{
-				this.SetRelatedEntities<DataverseModel.zup_lab_ocorrencia>("zup_contact_zup_lab_ocorrencia_918", null, value);
-			}
-		}
-		
-		/// <summary>
-		/// N:1 contact_customer_accounts
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcustomerid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_customer_accounts")]
-		public DataverseModel.Account contact_customer_accounts
+		public System.Collections.Generic.IEnumerable<DataverseModel.Contact> contact_customer_accounts
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DataverseModel.Account>("contact_customer_accounts", null);
+				return this.GetRelatedEntities<DataverseModel.Contact>("contact_customer_accounts", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetRelatedEntity<DataverseModel.Account>("contact_customer_accounts", null, value);
+				this.SetRelatedEntities<DataverseModel.Contact>("contact_customer_accounts", null, value);
 			}
 		}
 		
 		/// <summary>
-		/// N:1 contact_customer_contacts
+		/// 1:N msa_account_managingpartner
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcustomerid")]
-		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_customer_contacts", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DataverseModel.Contact Referencingcontact_customer_contacts
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msa_account_managingpartner", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<DataverseModel.Account> Referencedmsa_account_managingpartner
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DataverseModel.Contact>("contact_customer_contacts", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntities<DataverseModel.Account>("msa_account_managingpartner", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetRelatedEntity<DataverseModel.Contact>("contact_customer_contacts", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntities<DataverseModel.Account>("msa_account_managingpartner", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 			}
 		}
 		
 		/// <summary>
-		/// N:1 contact_master_contact
+		/// 1:N msa_contact_managingpartner
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msa_contact_managingpartner")]
+		public System.Collections.Generic.IEnumerable<DataverseModel.Contact> msa_contact_managingpartner
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<DataverseModel.Contact>("msa_contact_managingpartner", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<DataverseModel.Contact>("msa_contact_managingpartner", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N zup_account_zup_lab_ocorrencia_918
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("zup_account_zup_lab_ocorrencia_918")]
+		public System.Collections.Generic.IEnumerable<DataverseModel.zup_lab_ocorrencia> zup_account_zup_lab_ocorrencia_918
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<DataverseModel.zup_lab_ocorrencia>("zup_account_zup_lab_ocorrencia_918", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<DataverseModel.zup_lab_ocorrencia>("zup_account_zup_lab_ocorrencia_918", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 account_master_account
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masterid")]
-		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_master_contact", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public DataverseModel.Contact Referencingcontact_master_contact
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_master_account", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public DataverseModel.Account Referencingaccount_master_account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DataverseModel.Contact>("contact_master_contact", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<DataverseModel.Account>("account_master_account", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		
 		/// <summary>
-		/// N:1 msa_contact_managingpartner
+		/// N:1 account_parent_account
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msa_managingpartnerid")]
-		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msa_contact_managingpartner")]
-		public DataverseModel.Account msa_contact_managingpartner
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentaccountid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_parent_account", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public DataverseModel.Account Referencingaccount_parent_account
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<DataverseModel.Account>("msa_contact_managingpartner", null);
+				return this.GetRelatedEntity<DataverseModel.Account>("account_parent_account", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
-				this.SetRelatedEntity<DataverseModel.Account>("msa_contact_managingpartner", null, value);
+				this.SetRelatedEntity<DataverseModel.Account>("account_parent_account", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 account_primary_contact
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primarycontactid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_primary_contact")]
+		public DataverseModel.Contact account_primary_contact
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<DataverseModel.Contact>("account_primary_contact", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<DataverseModel.Contact>("account_primary_contact", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 msa_account_managingpartner
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msa_managingpartnerid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msa_account_managingpartner", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public DataverseModel.Account Referencingmsa_account_managingpartner
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<DataverseModel.Account>("msa_account_managingpartner", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<DataverseModel.Account>("msa_account_managingpartner", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 			}
 		}
 		
@@ -6206,7 +4649,7 @@ namespace DataverseModel
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
 		[System.Diagnostics.DebuggerNonUserCode()]
-		public Contact(object anonymousType) : 
+		public Account(object anonymousType) : 
 				this()
 		{
             foreach (var p in anonymousType.GetType().GetProperties())
@@ -6224,9 +4667,9 @@ namespace DataverseModel
                 {
                     case "id":
                         base.Id = (System.Guid)value;
-                        Attributes["contactid"] = base.Id;
+                        Attributes["accountid"] = base.Id;
                         break;
-                    case "contactid":
+                    case "accountid":
                         var id = (System.Nullable<System.Guid>) value;
                         if(id == null){ continue; }
                         base.Id = id.Value;
